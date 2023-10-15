@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stages {
+      stages {
         stage("checkout") { 
             steps {
                 sh 'rm -rf hello-world-war'
