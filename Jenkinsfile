@@ -1,16 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('checkout') {
-            steps {	
-		    sh 'rm -rf hello-world-war'
-                sh 'git clone https://github.com/bhaskarshettyhk/hello-world-war/'
+        stage("checkout") { 
+            steps {
+                sh 'rm -rf hello-world-war'
+                sh 'git clone https://github.com/bhaskarshettyhk/hello-world-war.git
             }
         }
-	    stage('Build') {
-            steps {		
-                sh 'mvn clean package'
+       stage("build") { 
+            steps { 
+                sh 'mvn package'
+               }
             }
-        }   
-    }
-}
+        stage("build") { 
+            steps { 
+              sh 'sudo cp $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/var/lib/tomcat9/webapps
+            }
+          }  
+       }
+     }
