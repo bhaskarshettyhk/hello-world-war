@@ -12,7 +12,7 @@ pipeline {
                 sh 'mvn package'
                }
             }
-        stage("build") { 
+        stage("deploy") { 
             steps { 
               sh 'sudo cp $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/tomcat9/webapps'
             }
