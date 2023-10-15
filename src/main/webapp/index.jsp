@@ -3,9 +3,7 @@
 <title>Hello World!</title>
 </head>
 <body>
-	<h1>boat/h1>
-       <h1>ind v/s pak</h1>
-         <h1>ind v/s pak</h1>
+	<h1>987654321</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
