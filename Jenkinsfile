@@ -14,7 +14,7 @@ pipeline {
             }
         stage("build") { 
             steps { 
-              sh 'sudo cp $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/var/lib/tomcat9/webapps
+              sh 'sudo cp $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/tomcat9/webapps
             }
           }  
        }
