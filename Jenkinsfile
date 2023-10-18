@@ -12,7 +12,7 @@ pipeline {
         }
        stage("build") { 
            agent {
-               label 'slave1'
+               label 'slave4'
             }
             steps { 
                 sh 'mvn package'
