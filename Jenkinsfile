@@ -3,7 +3,7 @@ pipeline {
       stages {
         stage("checkout") { 
             agent {
-                label 'slave1'
+                label 'slave4'
             }
             steps {
                 sh 'rm -rf hello-world-war'
