@@ -6,7 +6,7 @@ pipeline {
         var = "Build & Deployment"
     }
     stages {
-        stage('tomcat installation') {
+        stage('checkout') {
             steps {
                 sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/bhaskarshettyhk/hello-world-war.git'
@@ -28,11 +28,16 @@ pipeline {
             }
         }
     }
-     post{
-        always{
-            mail to: "krishnamurthyhk57@gmail.com",
-            subject: "FAILED",
-            body: "deployment is failed "
+   stage('Send Email') {
+    steps {
+        script {
+            emailext subject: 'Build Status',
+                body: 'The build is complete.',
+                to: 'krishnamurthyhk57@gmail',
+                mimeType: 'text/plain',
+                replyTo: 'bhaskarshettyd@gmail.com'
         }
     }
+} 
 }
+
