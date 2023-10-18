@@ -1,38 +1,38 @@
 pipeline {
-    agent none
-      stages {
-        stage("checkout") { 
-            agent {
-                label 'slave4'
-            }
+    agent {
+        label "slave4"
+    }
+    environment {
+        var = "Build & Deployment"
+    }
+    stages {
+        stage('tomcat installation') {
             steps {
                 sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/bhaskarshettyhk/hello-world-war.git'
+                sh 'chmod 755 ${WORKSPACE}/hello-world-war/tomcatscript'
+                sh '${WORKSPACE}/hello-world-war/tomcatscript'
             }
         }
-       stage("build") { 
-           agent {
-               label 'slave4'
+        stage('build') {
+            steps {
+                dir('hello-world-war') {
+                    sh 'mvn package'
+                }
             }
-            steps { 
-                sh 'mvn package'
-               }
+        }
+        stage('deploy step') {
+            steps {
+                build job: 'email'
+                echo "the whole $var is success"
             }
-        stage("deploy") {
-            agent {
-                label 'slave4'
-            }
-            steps { 
-             echo "hi"   
-             // sh 'sudo cp -r $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/tomcat9/webapps'//
-            }
-          }  
-      }
-           post{
-             always{
-                mail to: "krishnamurthyhk57@gmail.com",
-                subject: "SUCCESS",
-                body: "deployment is SUCCESS "
+        }
+    }
+     post{
+        always{
+            mail to: "krishnamurthyhk57@gmail.com",
+            subject: "FAILED",
+            body: "deployment is failed "
         }
     }
 }
