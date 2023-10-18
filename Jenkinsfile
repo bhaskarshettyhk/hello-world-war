@@ -27,5 +27,12 @@ pipeline {
              // sh 'sudo cp -r $WORKSPACE/target/hello-world-war-1.0.0 /var/lib/tomcat9/webapps'//
             }
           }  
-       }
-     }
+      }
+           post{
+             always{
+                mail to: "krishnamurthyhk57@gmail.com",
+                subject: "SUCCESS",
+                body: "deployment is SUCCESS "
+        }
+    }
+}
