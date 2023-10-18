@@ -20,7 +20,7 @@ pipeline {
             }
         stage("deploy") {
             agent {
-                label 'slave2'
+                label 'slave4'
             }
             steps { 
              echo "hi"   
