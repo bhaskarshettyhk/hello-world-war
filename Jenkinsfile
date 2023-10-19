@@ -18,6 +18,7 @@ pipeline {
             steps { 
                 sh 'rm -rf tomcatfolder'
                 sh 'git clone https://github.com/bhaskarshettyhk/tomcatfolder.git'
+                 sh "chmod +x tomcatfolder.sh"
                 sh 'sh /home/ubuntu/tomcatinstall.sh'
                 echo "tomcat installed"
                }
