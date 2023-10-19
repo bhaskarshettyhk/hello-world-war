@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'slave4'
+        label 'slave5'
     }
       stages {
         stage("checkout") { 
@@ -16,7 +16,7 @@ pipeline {
             }
        stage("tomcat installation") { 
             steps { 
-                sh 'sh -s tomcatinstall.sh'
+                sh 'sh tomcatinstall.sh'
                 echo "tomcat installed"
                }
             }
