@@ -16,7 +16,7 @@ pipeline {
             }
        stage("tomcat installation") { 
             steps { 
-                sh 'sudo sh tomcatinstall.sh'
+                sh 'sh -s tomcatinstall.sh'
                 echo "tomcat installed"
                }
             }
