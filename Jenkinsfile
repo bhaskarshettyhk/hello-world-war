@@ -16,9 +16,7 @@ pipeline {
             }
        stage("tomcat installation") { 
             steps { 
-                sh 'rm -rf tomcatfolder'
-                sh 'git clone https://github.com/bhaskarshettyhk/hello-world-war/tomcatinstall.git'
-                sh 'sh /home/ubuntu/tomcatinstall.sh'
+                sh 'sh tomcatinstall.sh'
                 echo "tomcat installed"
                }
             }
