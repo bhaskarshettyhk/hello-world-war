@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt update -y
 sudo apt install default-jdk -y
 sudo apt-cache search tomcat
